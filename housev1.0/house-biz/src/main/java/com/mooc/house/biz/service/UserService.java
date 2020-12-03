@@ -2,11 +2,11 @@ package com.mooc.house.biz.service;
 
 import java.util.List;
 
+import com.mooc.house.biz.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mooc.house.common.model.User;
-import com.mooc.house.mapper.UserMapper;
 
 @Service
 public class UserService {
