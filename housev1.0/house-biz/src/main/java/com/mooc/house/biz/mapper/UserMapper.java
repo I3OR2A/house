@@ -10,5 +10,6 @@ import org.apache.ibatis.annotations.Mapper;
 public interface UserMapper {
 
 	public List<User>  selectUsers();
-	
+
+	public int insert(User account);
 }

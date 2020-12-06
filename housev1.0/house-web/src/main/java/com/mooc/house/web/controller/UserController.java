@@ -18,9 +18,6 @@ public class UserController {
 
   @Autowired
   private UserService userService;
-
-  @Autowired
-  private UserService userService;
   
   @RequestMapping("user")
   public List<User> getUsers(){
