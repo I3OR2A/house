@@ -20,6 +20,9 @@ public class UserService {
   private FileService fileService;
 
   @Autowired
+  private MailService mailService;
+
+  @Autowired
   private UserMapper userMapper;
 
   public List<User> getUsers() {
@@ -43,7 +46,7 @@ public class UserService {
     BeanHelper.onInsert(account);
     account.setEnable(0);
     userMapper.insert(account);
-    registerNotify(account.getEmail());
+    mailService.registerNotify(account.getEmail());
     return true;
   }
 
