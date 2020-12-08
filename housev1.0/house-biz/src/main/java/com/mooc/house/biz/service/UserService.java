@@ -7,6 +7,7 @@ import com.mooc.house.biz.mapper.UserMapper;
 import com.mooc.house.common.utils.BeanHelper;
 import com.mooc.house.common.utils.HashUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.mooc.house.common.model.User;
@@ -24,6 +25,9 @@ public class UserService {
 
   @Autowired
   private UserMapper userMapper;
+
+  @Value("${file.prefix}")
+  private String imgPrefix;
 
   public List<User> getUsers() {
     return userMapper.selectUsers();
@@ -52,6 +56,34 @@ public class UserService {
 
   public boolean enable(String key) {
     return mailService.enable(key);
+  }
+
+  /**
+   * 用户名密码验证
+   *
+   * @param username
+   * @param password
+   * @return
+   */
+  public User auth(String username, String password) {
+    User user = new User();
+    user.setEmail(username);
+    user.setPasswd(HashUtils.encryPassword(password));
+    user.setEnable(1);
+    List<User> list = getUserByQuery(user);
+    if (!list.isEmpty()) {
+      return list.get(0);
+    }
+    return null;
+  }
+
+
+  public List<User> getUserByQuery(User user) {
+    List<User> list = userMapper.selectUsersByQuery(user);
+    list.forEach(u -> {
+      u.setAvatar(imgPrefix + u.getAvatar());
+    });
+    return list;
   }
 
 }
