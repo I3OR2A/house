@@ -50,4 +50,8 @@ public class UserService {
     return true;
   }
 
+  public boolean enable(String key) {
+    return mailService.enable(key);
+  }
+
 }
