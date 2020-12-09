@@ -22,10 +22,12 @@ public class HouseController {
      * 2.支持小区搜索、类型搜索
      * 3.支持排序
      * 4.支持展示图片、价格、标题、地址等信息
+     *
      * @return
      */
     @RequestMapping("/house/list")
-    public String houseList(Integer pageSize, Integer pageNum, House query, ModelMap modelMap){
+    public String houseList(Integer pageSize, Integer pageNum, House query, ModelMap modelMap) {
         houseService.queryHouse(query, PageParams.build(pageSize, pageNum));
         return null;
     }
+}
