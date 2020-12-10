@@ -16,13 +16,16 @@
     
     <typeAliases>
         <typeAlias type="com.mooc.house.common.model.User" alias="user" />
+        <typeAlias type="com.mooc.house.common.model.Agency"      alias="agency"/>
         <typeAlias type="com.mooc.house.common.model.House" alias="house" />
         <typeAlias type="com.mooc.house.common.model.Community" alias="community" />
+        <typeAlias type="com.mooc.house.common.model.HouseUser"     alias="houseUser"/>
     </typeAliases>
 
     <mappers>
         <mapper resource="mapper/user.xml" />
         <mapper resource="mapper/house.xml" />
+        <mapper resource="mapper/agency.xml" />
     </mappers>
 
 </configuration>
