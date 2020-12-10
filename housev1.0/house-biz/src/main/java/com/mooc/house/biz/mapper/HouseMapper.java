@@ -1,5 +1,6 @@
 package com.mooc.house.biz.mapper;
 
+import com.mooc.house.common.model.Community;
 import com.mooc.house.common.model.House;
 import com.mooc.house.common.model.User;
 import com.mooc.house.common.page.PageParams;
@@ -16,4 +17,6 @@ public interface HouseMapper {
     public Long selectPageCount(@Param("house") House query);
 
     public int insert(User account);
+
+    public List<Community> selectCommunity(Community community);
 }
